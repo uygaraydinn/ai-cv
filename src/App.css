@@ -1,0 +1,122 @@
+body {
+  margin: 0;
+  font-family: Arial, Helvetica, sans-serif;
+  background-color: #0f172a;
+  color: white;
+}
+
+.container {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 20px;
+  text-align: center;
+}
+
+h1 {
+  font-size: 60px;
+  margin-bottom: 20px;
+}
+
+.container p {
+  font-size: 22px;
+  color: #cbd5e1;
+  margin-bottom: 40px;
+}
+
+button {
+  padding: 16px 40px;
+  font-size: 20px;
+  background-color: #2563eb;
+  color: white;
+  border: none;
+  border-radius: 12px;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+button:hover {
+  background-color: #1d4ed8;
+}
+
+.cv-section {
+  max-width: 1200px;
+  margin: 50px auto;
+  display: flex;
+  justify-content: space-between;
+  gap: 40px;
+}
+
+.left-panel,
+.right-panel {
+  flex: 1;
+  background-color: #1b1b2f;
+  padding: 30px;
+  border-radius: 15px;
+  box-shadow: 0 0 15px rgba(0,0,0,0.3);
+}
+
+.left-panel h2,
+.right-panel h2 {
+  margin-bottom: 25px;
+}
+
+.left-panel input {
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 15px;
+  border-radius: 8px;
+  border: none;
+  font-size: 16px;
+}
+
+.right-panel p {
+  margin: 12px 0;
+  font-size: 18px;
+}
+
+/* ========================= */
+/* PREVIEW TASARIMI */
+/* ========================= */
+
+.right-panel h1 {
+  font-size: 36px;
+  margin-bottom: 8px;
+  text-align: center;
+  color: white;
+}
+
+.right-panel h3 {
+  text-align: center;
+  color: #94a3b8;
+  font-weight: normal;
+  margin-top: 0;
+  margin-bottom: 25px;
+}
+
+.right-panel hr {
+  border: none;
+  height: 1px;
+  background-color: #334155;
+  margin-bottom: 25px;
+}
+
+.right-panel p {
+  font-size: 18px;
+  margin: 15px 0;
+  color: #e2e8f0;
+}
+
+.left-panel textarea {
+  width: 100%;
+  min-height: 120px;
+  padding: 10px;
+  border-radius: 8px;
+  border: none;
+  font-size: 16px;
+  resize: vertical;
+  box-sizing: border-box;
+  margin-bottom: 20px;
+}
