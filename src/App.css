@@ -141,3 +141,8 @@ button:hover {
   background-color: #3b82f6;
   margin: 20px 0;
 }
+
+.right-panel h1,
+.right-panel h2:first-of-type {
+  text-align: center;
+}
