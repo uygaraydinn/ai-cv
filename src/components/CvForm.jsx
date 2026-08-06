@@ -60,6 +60,9 @@ function CvForm(props) {
        onChange={(e) => props.setHakkimda(e.target.value)}
        ></textarea>
 
+       <hr />
+       <h2>🎓 Eğitim</h2>
+
       <label>Okul</label>
       <input
         type="text"
@@ -89,6 +92,8 @@ function CvForm(props) {
         value={props.bitisYili + ""}
         onChange={(e) => props.setBitisYili(e.target.value)}
       />
+       <hr />
+       <h2>💼 Deneyim</h2>
 
        <label>Şirket</label>
        <input
@@ -132,7 +137,9 @@ function CvForm(props) {
         )}
         <hr />
 
-        <h3>Yetenekler</h3>
+        <hr />
+        <h2>🛠️ Yetenekler</h2>
+
         <input
         type="text"
         placeholder="Bir yetenek yazın"
