@@ -1,12 +1,16 @@
 import { useState } from "react";
+import PersonalSection from "./PersonalSection";
 
 function CvForm(props) {
   
   const [skillInput, setSkillInput] = useState("");
+
   const [showPersonal, setShowPersonal] = useState(true);
+  const [showEducation, setShowEducation] = useState(false);
   
-  return (
+  return ( 
     <div>
+      <PersonalSection />
       <h2
        onClick={() => setShowPersonal(!showPersonal)}
        style={{ cursor: "pointer" }}
@@ -61,7 +65,12 @@ function CvForm(props) {
        ></textarea>
 
        <hr />
-       <h2>🎓 Eğitim</h2>
+        <h2
+        onClick={() => setShowEducation(!showEducation)}
+        style={{ cursor: "pointer" }}
+        >
+        {showEducation ? "▼" : "▶"} 🎓 Eğitim
+        </h2>
 
       <label>Okul</label>
       <input

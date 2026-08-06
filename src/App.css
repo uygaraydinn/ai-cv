@@ -120,3 +120,24 @@ button:hover {
   box-sizing: border-box;
   margin-bottom: 20px;
 }
+
+.right-panel {
+  line-height: 1.8;
+}
+
+.right-panel h1 {
+  margin-bottom: 5px;
+}
+
+.right-panel h2 {
+  margin-top: 25px;
+  margin-bottom: 10px;
+  color: #60a5fa;
+}
+
+.right-panel hr {
+  border: none;
+  height: 1px;
+  background-color: #3b82f6;
+  margin: 20px 0;
+}

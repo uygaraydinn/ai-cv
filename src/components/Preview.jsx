@@ -5,26 +5,28 @@ function Preview(props) {
 
       <h1>{props.adSoyad || "Ad Soyad"}</h1>
 
-      <h3>{props.meslek || "Meslek"}</h3>
+      <hr />
+
+      <h2>{props.meslek || "Meslek"}</h2>
 
       <hr />
 
-      <p>📧 {props.email || "Henüz e-posta girilmedi."}</p>
+      <p><strong>📧 E-posta:</strong> {props.email || "-"}</p>
 
-      <p>📞 {props.telefon || "Henüz telefon girilmedi."}</p>
+      <p><strong>📞 Telefon:</strong> {props.telefon || "-"}</p>
 
-      <p>📍 {props.sehir || "Henüz şehir girilmedi."}</p>
+      <p><strong>📍 Şehir:</strong> {props.sehir || "-"}</p>
 
       <hr />
 
-       <h3>Hakkımda</h3>
+       <h2>Hakkımda</h2>
        <p>
        {props.hakkimda || "Henüz hakkımda bilgisi girilmedi."}
        </p>
 
        <hr />
 
-       <h3>Eğitim</h3>
+       <h2>Eğitim</h2>
        <p>{props.okul}</p>
        <p>{props.bolum}</p>
        <p>
@@ -33,7 +35,7 @@ function Preview(props) {
 
        <hr />
 
-       <h3>Deneyim</h3>
+       <h2>Deneyim</h2>
 
        <p><strong>{props.sirket}</strong></p>
 
@@ -46,7 +48,7 @@ function Preview(props) {
 
        <hr />
 
-       <h3>Yetenekler</h3>
+       <h2>Yetenekler</h2>
        {props.skills.map((skill, index) => (
        <div
        key={index}
