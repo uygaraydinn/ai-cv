@@ -177,6 +177,11 @@ function CvForm(props) {
         ...props.deneyimler,
         yeniDeneyim,
        ]);
+       props.setSirket("");
+       props.setPozisyon("");
+       props.setDeneyimBaslangic("");
+       props.setDeneyimBitis("");
+       props.setDeneyimAciklama("");
         }}
         >
         Deneyim Ekle
@@ -210,6 +215,7 @@ function CvForm(props) {
 
         if (varMi) {
         alert("Bu yetenek zaten eklenmiş.");
+        setSkillInput("");
         return;
         }
 

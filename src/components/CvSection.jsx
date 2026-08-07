@@ -26,6 +26,16 @@ function CvSection() {
     skills.filter((skill, index) => index !== indexToDelete)
     );
     };
+    const deleteEducation = (indexToDelete) => {
+    setEgitimler(
+    egitimler.filter((egitim, index) => index !== indexToDelete)
+    );
+    };
+    const deleteDeneyim = (indexToDelete) => {
+    setDeneyimler(
+    deneyimler.filter((deneyim, index) => index !== indexToDelete)
+    );
+    };
 
   return (
   <div className="cv-section">
@@ -92,6 +102,8 @@ function CvSection() {
         egitimler={egitimler}
         skills={skills}
         deleteSkill={deleteSkill}
+        deleteEducation={deleteEducation}
+        deleteDeneyim={deleteDeneyim}
 
       />
     </div>

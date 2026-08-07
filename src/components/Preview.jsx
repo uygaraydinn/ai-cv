@@ -35,6 +35,11 @@ function Preview(props) {
        <p>
        {egitim.baslangic} - {egitim.bitis}
        </p>
+       <button
+       onClick={() => props.deleteEducation(index)}
+       >
+       Sil
+       </button>
        <hr />
        </div>
        ))}
@@ -54,6 +59,12 @@ function Preview(props) {
        </p>
 
        <p>{deneyim.aciklama}</p>
+
+        <button
+        onClick={() => props.deleteDeneyim(index)}
+        >
+        Sil
+       </button>
 
        <hr />
        </div>
