@@ -69,6 +69,11 @@ function Preview(props) {
        <p>{deneyim.aciklama}</p>
 
         <button
+        onClick={() => props.editDeneyim(index)}
+        >
+        Düzenle
+        </button>
+        <button
         onClick={() => props.deleteDeneyim(index)}
         >
         Sil

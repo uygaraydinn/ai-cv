@@ -115,7 +115,7 @@ function CvForm(props) {
         const yeniListe = [...props.egitimler];
         yeniListe[props.editEducationIndex] = yeniEgitim;
         props.setEgitimler(yeniListe);
-        
+
         props.setOkul("");
         props.setBolum("");
         props.setBaslangicYili("");
@@ -193,6 +193,21 @@ function CvForm(props) {
         aciklama: props.deneyimAciklama,
         };
         console.log(yeniDeneyim);
+
+        if (props.editDeneyimIndex !== null) {
+        const yeniListe = [...props.deneyimler];
+        yeniListe[props.editDeneyimIndex] = yeniDeneyim;
+        props.setDeneyimler(yeniListe);
+        props.setSirket("");
+        props.setPozisyon("");
+        props.setDeneyimBaslangic("");
+        props.setDeneyimBitis("");
+        props.setDeneyimAciklama("");
+        props.setEditDeneyimIndex(null);
+        
+        return;
+        }
+
         props.setDeneyimler([
         ...props.deneyimler,
         yeniDeneyim,
@@ -204,7 +219,9 @@ function CvForm(props) {
        props.setDeneyimAciklama("");
         }}
         >
-        Deneyim Ekle
+        {props.editDeneyimIndex === null
+        ? "Deneyim Ekle"
+        : "Deneyimi Güncelle"}
         </button>
         </>
         )}

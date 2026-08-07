@@ -15,6 +15,7 @@ function CvSection() {
   const [bitisYili, setBitisYili] = useState("");
   const [egitimler, setEgitimler] = useState([]);
   const [editEducationIndex, setEditEducationIndex] = useState(null);
+  const [editDeneyimIndex, setEditDeneyimIndex] = useState(null);
   const [deneyimler, setDeneyimler] = useState([]);
   const [sirket, setSirket] = useState("");
   const [pozisyon, setPozisyon] = useState("");
@@ -47,6 +48,18 @@ function CvSection() {
 
     setEditEducationIndex(index);
    };
+
+   const editDeneyim = (index) => {
+   const deneyim = deneyimler[index];
+
+   setSirket(deneyim.sirket);
+   setPozisyon(deneyim.pozisyon);
+   setDeneyimBaslangic(deneyim.baslangic);
+   setDeneyimBitis(deneyim.bitis);
+   setDeneyimAciklama(deneyim.aciklama);
+
+   setEditDeneyimIndex(index);
+  };
 
     const deleteDeneyim = (indexToDelete) => {
     setDeneyimler(
@@ -96,6 +109,8 @@ function CvSection() {
         editEducationIndex={editEducationIndex}
         setEditEducationIndex={setEditEducationIndex}
         editEducation={editEducation}
+        editDeneyimIndex={editDeneyimIndex}
+        setEditDeneyimIndex={setEditDeneyimIndex}
         skills={skills}
         setSkills={setSkills}
       />
@@ -125,6 +140,7 @@ function CvSection() {
         deleteEducation={deleteEducation}
         editEducation={editEducation}
         deleteDeneyim={deleteDeneyim}
+        editDeneyim={editDeneyim}
 
       />
     </div>
