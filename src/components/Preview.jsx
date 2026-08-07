@@ -36,6 +36,14 @@ function Preview(props) {
        {egitim.baslangic} - {egitim.bitis}
        </p>
        <button
+        onClick={() => {
+        props.editEducation(index);
+        }}
+        >
+        Düzenle
+       </button>
+
+       <button
        onClick={() => props.deleteEducation(index)}
        >
        Sil

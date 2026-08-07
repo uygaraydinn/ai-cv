@@ -110,17 +110,37 @@ function CvForm(props) {
        bitis: props.bitisYili,
        };
         console.log(yeniEgitim);
+
+        if (props.editEducationIndex !== null) {
+        const yeniListe = [...props.egitimler];
+        yeniListe[props.editEducationIndex] = yeniEgitim;
+        props.setEgitimler(yeniListe);
+        
+        props.setOkul("");
+        props.setBolum("");
+        props.setBaslangicYili("");
+        props.setBitisYili("");
+
+        props.setEditEducationIndex(null);
+
+        return;
+        }
+
         props.setEgitimler([
         ...props.egitimler,
         yeniEgitim,
         ]);
+
         props.setOkul("");
         props.setBolum("");
         props.setBaslangicYili("");
         props.setBitisYili("");
         }}
+
         >
-        Eğitim Ekle
+        {props.editEducationIndex === null
+        ? "Eğitim Ekle"
+        : "Eğitimi Güncelle"}
         </button>
 
        <hr />
