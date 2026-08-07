@@ -27,11 +27,17 @@ function Preview(props) {
        <hr />
 
        <h2>Eğitim</h2>
-       <p>{props.okul}</p>
-       <p>{props.bolum}</p>
+
+       {props.egitimler.map((egitim, index) => (
+       <div key={index}>
+       <p>{egitim.okul}</p>
+       <p>{egitim.bolum}</p>
        <p>
-       {props.baslangicYili} - {props.bitisYili}
+       {egitim.baslangic} - {egitim.bitis}
        </p>
+       <hr />
+       </div>
+       ))}
 
        <hr />
 

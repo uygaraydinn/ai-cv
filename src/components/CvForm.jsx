@@ -1,5 +1,4 @@
 import { useState } from "react";
-import PersonalSection from "./PersonalSection";
 
 function CvForm(props) {
   
@@ -10,7 +9,7 @@ function CvForm(props) {
   
   return ( 
     <div>
-      <PersonalSection />
+
       <h2
        onClick={() => setShowPersonal(!showPersonal)}
        style={{ cursor: "pointer" }}
@@ -101,6 +100,29 @@ function CvForm(props) {
         value={props.bitisYili + ""}
         onChange={(e) => props.setBitisYili(e.target.value)}
       />
+
+       <button
+        onClick={() => {
+        const yeniEgitim = {
+        okul: props.okul,
+        bolum: props.bolum,
+        baslangic: props.baslangicYili,
+       bitis: props.bitisYili,
+       };
+        console.log(yeniEgitim);
+        props.setEgitimler([
+        ...props.egitimler,
+        yeniEgitim,
+        ]);
+        props.setOkul("");
+        props.setBolum("");
+        props.setBaslangicYili("");
+        props.setBitisYili("");
+        }}
+        >
+        Eğitim Ekle
+        </button>
+
        <hr />
        <h2>💼 Deneyim</h2>
 
