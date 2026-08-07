@@ -43,14 +43,21 @@ function Preview(props) {
 
        <h2>Deneyim</h2>
 
-       <p><strong>{props.sirket}</strong></p>
+       {props.deneyimler.map((deneyim, index) => (
+       <div key={index}>
+       <p><strong>{deneyim.sirket}</strong></p>
 
-       <p>{props.pozisyon}</p>
+       <p>{deneyim.pozisyon}</p>
+
        <p>
-       {props.deneyimBaslangic} - {props.deneyimBitis}
+       {deneyim.baslangic} - {deneyim.bitis}
        </p>
 
-       <p>{props.deneyimAciklama}</p>
+       <p>{deneyim.aciklama}</p>
+
+       <hr />
+       </div>
+       ))}
 
        <hr />
 

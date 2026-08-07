@@ -163,7 +163,24 @@ function CvForm(props) {
         value={props.deneyimAciklama}
         onChange={(e) => props.setDeneyimAciklama(e.target.value)}
         ></textarea>
-
+        <button
+        onClick={() => {
+        const yeniDeneyim = {
+        sirket: props.sirket,
+        pozisyon: props.pozisyon,
+        baslangic: props.deneyimBaslangic,
+        bitis: props.deneyimBitis,
+        aciklama: props.deneyimAciklama,
+        };
+        console.log(yeniDeneyim);
+        props.setDeneyimler([
+        ...props.deneyimler,
+        yeniDeneyim,
+       ]);
+        }}
+        >
+        Deneyim Ekle
+        </button>
         </>
         )}
         <hr />

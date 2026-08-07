@@ -14,6 +14,7 @@ function CvSection() {
   const [baslangicYili, setBaslangicYili] = useState("");
   const [bitisYili, setBitisYili] = useState("");
   const [egitimler, setEgitimler] = useState([]);
+  const [deneyimler, setDeneyimler] = useState([]);
   const [sirket, setSirket] = useState("");
   const [pozisyon, setPozisyon] = useState("");
   const [deneyimBaslangic, setDeneyimBaslangic] = useState("");
@@ -61,6 +62,8 @@ function CvSection() {
         setDeneyimBitis={setDeneyimBitis}
         deneyimAciklama={deneyimAciklama}
         setDeneyimAciklama={setDeneyimAciklama}
+        deneyimler={deneyimler}
+        setDeneyimler={setDeneyimler}
         egitimler={egitimler}
         setEgitimler={setEgitimler}
         skills={skills}
@@ -85,6 +88,7 @@ function CvSection() {
         deneyimBaslangic={deneyimBaslangic}
         deneyimBitis={deneyimBitis}
         deneyimAciklama={deneyimAciklama}
+        deneyimler={deneyimler}
         egitimler={egitimler}
         skills={skills}
         deleteSkill={deleteSkill}
