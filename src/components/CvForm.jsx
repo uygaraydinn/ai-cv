@@ -4,9 +4,11 @@ function CvForm(props) {
   
   const [skillInput, setSkillInput] = useState("");
 
-  const [showPersonal, setShowPersonal] = useState(true);
+  const [showPersonal, setShowPersonal] = useState(false);
   const [showEducation, setShowEducation] = useState(false);
-  
+  const [showExperience, setShowExperience] = useState(false);
+  const [showSkills, setShowSkills] = useState(false);
+
   return ( 
     <div>
 
@@ -63,6 +65,9 @@ function CvForm(props) {
        onChange={(e) => props.setHakkimda(e.target.value)}
        ></textarea>
 
+       </>
+       )}
+
        <hr />
         <h2
         onClick={() => setShowEducation(!showEducation)}
@@ -70,6 +75,9 @@ function CvForm(props) {
         >
         {showEducation ? "▼" : "▶"} 🎓 Eğitim
         </h2>
+
+        {showEducation && (
+        <>
 
       <label>Okul</label>
       <input
@@ -143,8 +151,20 @@ function CvForm(props) {
         : "Eğitimi Güncelle"}
         </button>
 
+        </>
+        )}
+
        <hr />
-       <h2>💼 Deneyim</h2>
+
+       <h2
+       onClick={() => setShowExperience(!showExperience)}
+       style={{ cursor: "pointer" }}
+       >
+       {showExperience ? "▼" : "▶"} 💼 Deneyim
+       </h2>
+
+       {showExperience && (
+       <>
 
        <label>Şirket</label>
        <input
@@ -153,7 +173,7 @@ function CvForm(props) {
         value={props.sirket}
         onChange={(e) => props.setSirket(e.target.value)}
         />
-      <label>Pozisyon</label>
+       <label>Pozisyon</label>
        <input
        type="text"
        placeholder="Pozisyon"
@@ -204,7 +224,7 @@ function CvForm(props) {
         props.setDeneyimBitis("");
         props.setDeneyimAciklama("");
         props.setEditDeneyimIndex(null);
-        
+
         return;
         }
 
@@ -225,10 +245,18 @@ function CvForm(props) {
         </button>
         </>
         )}
-        <hr />
 
         <hr />
-        <h2>🛠️ Yetenekler</h2>
+
+        <h2
+        onClick={() => setShowSkills(!showSkills)}
+        style={{ cursor: "pointer" }}
+        >
+        {showSkills ? "▼" : "▶"} 🛠️ Yetenekler
+        </h2>
+
+        {showSkills && (
+        <>
 
         <input
         type="text"
@@ -266,11 +294,14 @@ function CvForm(props) {
        Yetenek Ekle
        </button>
 
-      <br />
-      <br />
+       <br />
+       <br />
 
-      <button>CV Oluştur</button>
-    </div>
+        </>
+        )}
+
+       <button>CV Oluştur</button>
+     </div>
   );
 }
 
