@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import CvForm from "./CvForm";
 import Preview from "./Preview";
 
@@ -23,20 +23,140 @@ function CvSection() {
   const [deneyimBitis, setDeneyimBitis] = useState("");
   const [deneyimAciklama, setDeneyimAciklama] = useState("");
   const [skills, setSkills] = useState([]);
+  const [profilFoto, setProfilFoto] = useState("");
+  const [isLoaded, setIsLoaded] = useState(false);
+     useEffect(() => {
+      
+      if (!isLoaded) {
+      return;
+      }
+
+     localStorage.setItem(
+     "cvKisiselBilgiler",
+     JSON.stringify({
+      adSoyad,
+      email,
+      telefon,
+      sehir,
+      meslek,
+      hakkimda,
+     })
+     );
+     }, [
+      adSoyad,
+      email,
+      telefon,
+      sehir,
+      meslek,
+      hakkimda,
+      ]);
+
+      useEffect(() => {
+      const kayitliBilgiler = localStorage.getItem("cvKisiselBilgiler");
+
+      if (kayitliBilgiler) {
+      const bilgiler = JSON.parse(kayitliBilgiler);
+
+      setAdSoyad(bilgiler.adSoyad || "");
+      setEmail(bilgiler.email || "");
+      setTelefon(bilgiler.telefon || "");
+      setSehir(bilgiler.sehir || "");
+      setMeslek(bilgiler.meslek || "");
+      setHakkimda(bilgiler.hakkimda || "");
+      }
+     setIsLoaded(true);
+     }, []);
+
+     useEffect(() => {
+     if (!isLoaded) {
+     return;
+     }
+
+     localStorage.setItem(
+     "cvEgitimler",
+     JSON.stringify(egitimler)
+     );
+     }, [isLoaded, egitimler]);
 
 
-  const deleteSkill = (indexToDelete) => {
-    setSkills(
-    skills.filter((skill, index) => index !== indexToDelete)
-    );
-    };
+     useEffect(() => {
+     if (!isLoaded) {
+     return;
+     }
+
+     localStorage.setItem(
+     "cvDeneyimler",
+     JSON.stringify(deneyimler)
+     );
+     }, [isLoaded, deneyimler]);
+
+     useEffect(() => {
+     if (!isLoaded) {
+     return;
+     }
+
+     localStorage.setItem(
+     "cvSkills",
+     JSON.stringify(skills)
+     );
+     }, [isLoaded, skills]);
+
+     useEffect(() => {
+     if (!isLoaded) {
+     return;
+     }
+
+     localStorage.setItem(
+     "cvProfilFoto",
+     profilFoto
+     );
+     }, [isLoaded, profilFoto]);
+
+     useEffect(() => {
+     const kayitliProfilFoto = localStorage.getItem("cvProfilFoto");
+
+     if (kayitliProfilFoto) {
+     setProfilFoto(kayitliProfilFoto);
+     }
+     }, []);
+
+     useEffect(() => {
+     const kayitliSkills = localStorage.getItem("cvSkills");
+
+     if (kayitliSkills) {
+     setSkills(JSON.parse(kayitliSkills));
+     }
+     }, []);
+
+     useEffect(() => {
+     const kayitliDeneyimler = localStorage.getItem("cvDeneyimler");
+
+     if (kayitliDeneyimler) {
+     setDeneyimler(JSON.parse(kayitliDeneyimler));
+     }
+     }, []);
+
+     useEffect(() => {
+     const kayitliEgitimler = localStorage.getItem("cvEgitimler");
+
+     if (kayitliEgitimler) {
+     setEgitimler(JSON.parse(kayitliEgitimler));
+     }
+     }, []);
 
 
-    const deleteEducation = (indexToDelete) => {
-    setEgitimler(
-    egitimler.filter((egitim, index) => index !== indexToDelete)
-    );
-    };
+
+     const deleteSkill = (indexToDelete) => {
+     setSkills(
+     skills.filter((skill, index) => index !== indexToDelete)
+     );
+     };
+
+     const deleteEducation = (indexToDelete) => {
+     setEgitimler(
+     egitimler.filter((egitim, index) => index !== indexToDelete)
+     );
+     };
 
     const editEducation = (index) => {
     const egitim = egitimler[index];
@@ -113,6 +233,8 @@ function CvSection() {
         setEditDeneyimIndex={setEditDeneyimIndex}
         skills={skills}
         setSkills={setSkills}
+        profilFoto={profilFoto}
+        setProfilFoto={setProfilFoto}
       />
     </div>
 
@@ -141,6 +263,7 @@ function CvSection() {
         editEducation={editEducation}
         deleteDeneyim={deleteDeneyim}
         editDeneyim={editDeneyim}
+        profilFoto={profilFoto}
 
       />
     </div>

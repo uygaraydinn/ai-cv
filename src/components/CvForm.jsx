@@ -65,6 +65,19 @@ function CvForm(props) {
        onChange={(e) => props.setHakkimda(e.target.value)}
        ></textarea>
 
+       <label>Profil Fotoğrafı</label>
+       <input
+        type="file"
+        accept="image/*"
+        onChange={(e) => {
+        const file = e.target.files[0];
+
+        if (file) {
+        props.setProfilFoto(URL.createObjectURL(file));
+        }
+        }}
+        />
+
        </>
        )}
 

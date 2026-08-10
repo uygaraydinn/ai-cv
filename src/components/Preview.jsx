@@ -3,19 +3,42 @@ function Preview(props) {
     <div>
       <h2>CV Önizleme</h2>
 
-      <h1>{props.adSoyad || "Ad Soyad"}</h1>
+      {props.profilFoto && (
+      <img
+      src={props.profilFoto}
+      alt="Profil"
+      style={{
+      width: "140px",
+      height: "140px",
+      borderRadius: "50%",
+      objectFit: "cover",
+      display: "block",
+      margin: "0 auto 20px",
+      }}
+      />
+      )}
+
+      <h1 className="cv-name">
+      {props.adSoyad || "Ad Soyad"}
+      </h1>
 
       <hr />
 
-      <h2>{props.meslek || "Meslek"}</h2>
+      <h2 className="cv-title">
+      {props.meslek || "Meslek"}
+      </h2>
 
       <hr />
+
+      <div className="contact-info">
 
       <p><strong>📧 E-posta:</strong> {props.email || "-"}</p>
 
       <p><strong>📞 Telefon:</strong> {props.telefon || "-"}</p>
 
       <p><strong>📍 Şehir:</strong> {props.sehir || "-"}</p>
+
+      </div>
 
       <hr />
 
@@ -29,13 +52,17 @@ function Preview(props) {
        <h2>Eğitim</h2>
 
        {props.egitimler.map((egitim, index) => (
-       <div key={index}>
-       <p>{egitim.okul}</p>
-       <p>{egitim.bolum}</p>
-       <p>
+       <div key={index} className="education-item">
+       <p className="education-school">{egitim.okul}</p>
+       <p className="education-department">
+       {egitim.bolum}
+       </p>
+       <p className="education-date">
        {egitim.baslangic} - {egitim.bitis}
        </p>
+
        <button
+        className="cv-action-button"
         onClick={() => {
         props.editEducation(index);
         }}
@@ -44,10 +71,12 @@ function Preview(props) {
        </button>
 
        <button
+       className="cv-action-button"
        onClick={() => props.deleteEducation(index)}
        >
        Sil
        </button>
+
        <hr />
        </div>
        ))}
@@ -57,23 +86,32 @@ function Preview(props) {
        <h2>Deneyim</h2>
 
        {props.deneyimler.map((deneyim, index) => (
-       <div key={index}>
-       <p><strong>{deneyim.sirket}</strong></p>
+       <div key={index} className="experience-item">
+       <p className="experience-company">
+       {deneyim.sirket}
+       </p>
 
-       <p>{deneyim.pozisyon}</p>
+       <p className="experience-position">
+       {deneyim.pozisyon}
+       </p>
 
-       <p>
+       <p className="experience-date">
        {deneyim.baslangic} - {deneyim.bitis}
        </p>
 
-       <p>{deneyim.aciklama}</p>
+       <p className="experience-description">
+       {deneyim.aciklama}
+       </p>
 
         <button
+        className="cv-action-button"
         onClick={() => props.editDeneyim(index)}
         >
         Düzenle
         </button>
+
         <button
+        className="cv-action-button"
         onClick={() => props.deleteDeneyim(index)}
         >
         Sil
@@ -87,18 +125,23 @@ function Preview(props) {
 
        <h2>Yetenekler</h2>
        {props.skills.map((skill, index) => (
+
        <div
        key={index}
-       style={{
-       display: "flex",
-       justifyContent: "space-between",
-       alignItems: "center",
-       }}
+       className="skill-item"
        >
-       <p>✔ {skill}</p>
-       <button onClick={() => props.deleteSkill(index)}>
-       ❌
+       
+       <p className="skill-badge">
+       ✔ {skill}
+       <button
+       className="skill-delete-button"
+       onClick={() => props.deleteSkill(index)}
+       >
+       ×
        </button>
+       </p>
+
+
        </div>
        ))}
 

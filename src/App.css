@@ -85,11 +85,12 @@ button:hover {
 /* PREVIEW TASARIMI */
 /* ========================= */
 
-.right-panel h1 {
+ .right-panel h1 {
   font-size: 36px;
   margin-bottom: 8px;
   text-align: center;
   color: #0f172a;
+ }
 
 .right-panel h3 {
   text-align: center;
@@ -148,4 +149,139 @@ button:hover {
 .right-panel h1,
 .right-panel h2:first-of-type {
   text-align: center;
-}}
+}
+
+.right-panel .cv-name {
+  font-size: 36px;
+  margin: 0;
+  text-align: center;
+  color: #0f172a;
+}
+
+.right-panel .cv-title {
+  font-size: 20px;
+  margin-top: 5px;
+  margin-bottom: 25px;
+  text-align: center;
+  color: #64748b;
+  font-weight: normal;
+}
+
+.contact-info {
+  display: flex;
+  justify-content: center;
+  gap: 25px;
+  flex-wrap: wrap;
+  margin: 20px 0 30px;
+}
+
+.contact-info p {
+  margin: 0;
+  font-size: 15px;
+  color: #475569;
+}
+
+.cv-action-button {
+  padding: 8px 18px;
+  font-size: 14px;
+  border-radius: 8px;
+  margin: 5px;
+}
+
+.skill-badge {
+  display: inline-flex;
+  align-items: center;
+  background-color: #e2e8f0;
+  color: #1e293b;
+  padding: 6px 10px;
+  margin: 4px;
+  border-radius: 20px;
+  font-size: 14px;
+  line-height: 1;
+}
+
+.skill-item {
+  display: inline-flex;
+  align-items: center;
+  margin: 5px;
+}
+
+.skill-delete-button {
+  padding: 0;
+  margin-left: 6px;
+  font-size: 28px;
+  background: none;
+  color: #ef4444;
+  border: none;
+  cursor: pointer;
+}
+
+.education-item {
+  background-color: #f8fafc;
+  padding: 15px 20px;
+  margin: 15px 0;
+  border-radius: 10px;
+  border-left: 4px solid #3b82f6;
+}
+
+.education-school {
+  font-size: 26px;
+  font-weight: bold;
+  color: #0f172a;
+  margin: 0 0 5px;
+}
+
+.education-department {
+  font-size: 16px;
+  color: #475569;
+  margin: 0 0 8px;
+}
+
+.right-panel .education-school {
+  font-size: 24px;
+}
+
+.right-panel .education-date {
+  font-size: 14px;
+  color: #64748b;
+  margin: 0 0 10px;
+}
+
+.experience-item {
+  background-color: #f8fafc;
+  padding: 15px 20px;
+  margin: 15px 0;
+  border-radius: 10px;
+  border-left: 4px solid #3b82f6;
+}
+
+.right-panel .experience-company {
+  font-size: 22px;
+  font-weight: bold;
+  color: #0f172a;
+  margin: 0 0 5px;
+}
+
+.right-panel .experience-position {
+  font-size: 16px;
+  color: #475569;
+  margin: 0 0 8px;
+}
+
+.right-panel .experience-date {
+  font-size: 14px;
+  color: #64748b;
+  margin: 0 0 10px;
+}
+
+.right-panel .experience-description {
+  font-size: 15px;
+  color: #334155;
+  line-height: 1.6;
+  margin: 10px 0 15px;
+}
+
+.education-item,
+.experience-item {
+  text-align: left;
+}
