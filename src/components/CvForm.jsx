@@ -92,35 +92,35 @@ function CvForm(props) {
         {showEducation && (
         <>
 
-      <label>Okul</label>
-      <input
+       <label>Okul</label>
+       <input
         type="text"
         placeholder="Okul"
         value={props.okul + ""}
         onChange={(e) => props.setOkul(e.target.value)}
-      />
+       />
 
-      <label>Bölüm</label>
-      <input
+       <label>Bölüm</label>
+       <input
         type="text"
         placeholder="Bölüm"
         value={props.bolum + ""}
         onChange={(e) => props.setBolum(e.target.value)}
-      />
-      <label>Başlangıç Yılı</label>
-      <input
+       />
+       <label>Başlangıç Yılı</label>
+       <input
         type="number"
         placeholder="Başlangıç Yılı"
         value={props.baslangicYili + ""}
         onChange={(e) => props.setBaslangicYili(e.target.value)}
-      />
-      <label>Bitiş Yılı</label>
-      <input
+       />
+       <label>Bitiş Yılı</label>
+       <input
         type="number"
         placeholder="Bitiş Yılı"
         value={props.bitisYili + ""}
         onChange={(e) => props.setBitisYili(e.target.value)}
-      />
+       />
 
        <button
         onClick={() => {
@@ -313,8 +313,11 @@ function CvForm(props) {
         </>
         )}
 
-       <button>CV Oluştur</button>
-     </div>
+       <button onClick={() => window.print()}>
+       CV Oluştur
+       </button>
+       
+       </div>
   );
 }
 

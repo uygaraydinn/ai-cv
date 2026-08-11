@@ -1,7 +1,9 @@
 function Preview(props) {
   return (
     <div>
-      <h2>CV Önizleme</h2>
+      <div className="preview-title">
+      CV Önizleme
+      </div>
 
       {props.profilFoto && (
       <img

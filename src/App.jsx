@@ -6,8 +6,11 @@ import CvSection from "./components/CvSection";
 function App() {
   return (
     <>
-      <Navbar />  
-      <Hero />
+      <div className="print-hide">
+        <Navbar />
+        <Hero />
+      </div>
+
       <CvSection />
     </>
   );

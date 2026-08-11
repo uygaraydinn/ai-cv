@@ -285,3 +285,229 @@ button:hover {
 .experience-item {
   text-align: left;
 }
+
+@media print {
+  @page {
+    size: A4;
+    margin: 10mm;
+  }
+
+  body {
+    background: white;
+    color: #0f172a;
+    -webkit-print-color-adjust: exact;
+    print-color-adjust: exact;
+  }
+
+  .print-hide {
+  display: none !important;
+  }
+
+  .preview-title {
+  display: none;
+  }
+
+  .container,
+  .left-panel {
+  display: none !important;
+  }
+
+  .cv-section {
+    display: block;
+    width: 100%;
+    max-width: none;
+    margin: 0;
+    padding: 0;
+  }
+
+  .right-panel {
+    width: auto;
+    background: white;
+    color: #0f172a;
+    box-shadow: none;
+    border-radius: 0;
+    padding: 5px 15px;
+    margin: 0;
+    line-height: 1.35;
+  }
+
+  /* Profil fotoğrafı */
+  .right-panel img {
+    width: 200px !important;
+    height: 200px !important;
+    object-fit: cover;
+    border-radius: 50%;
+    display: block;
+    margin: 0 auto 12px !important;
+  }
+
+  /* İsim */
+  .right-panel .cv-name {
+    font-size: 32px;
+    font-weight: 700;
+    margin: 0 0 4px;
+    text-align: center;
+    color: #0f172a;
+  }
+
+  /* Meslek */
+  .right-panel .cv-title {
+    font-size: 17px;
+    margin: 0 0 12px;
+    text-align: center;
+    color: #475569;
+  }
+
+  /* Ana ayırıcı çizgiler */
+  .right-panel hr {
+  display: none !important;
+  }
+
+  /* İletişim */
+  .contact-info {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 18px;
+    flex-wrap: wrap;
+    margin: 8px 0 12px;
+  }
+
+  .contact-info p {
+    font-size: 11px;
+    margin: 0;
+    color: #334155;
+  }
+
+  /* Bölüm başlıkları */
+  .right-panel h2 {
+  font-size: 18px;
+  font-weight: 700;
+  color: #2563eb;
+  text-align: left;
+  margin: 12px 0 6px;
+  padding: 0 0 0 8px;
+  border-left: 3px solid #2563eb;
+}
+
+ .right-panel .cv-title {
+  border-left: none;
+  padding: 0;
+  text-align: center;
+ }
+
+  /* Genel paragraf */
+  .right-panel p {
+    font-size: 12px;
+    margin: 4px 0;
+    color: #334155;
+  }
+
+  /* Hakkımda */
+  .right-panel h2 + p {
+    font-size: 12px;
+    line-height: 1.4;
+    margin-bottom: 8px;
+  }
+
+  /* Eğitim */
+  .education-item {
+    background: #f8fafc;
+    padding: 8px 12px;
+    margin: 6px 0;
+    border-radius: 6px;
+    border-left: 3px solid #3b82f6;
+    break-inside: avoid;
+    page-break-inside: avoid;
+  }
+
+  .right-panel .education-school {
+    font-size: 20px;
+    font-weight: 700;
+    margin: 0 0 2px;
+    color: #0f172a;
+  }
+
+  .right-panel .education-department {
+    font-size: 15px;
+    margin: 0 0 2px;
+    color: #475569;
+  }
+
+  .right-panel .education-date {
+    font-size: 12px;
+    margin: 0;
+    color: #64748b;
+  }
+
+  /* Deneyim */
+  .experience-item {
+    background: #f8fafc;
+    padding: 8px 12px;
+    margin: 6px 0;
+    border-radius: 6px;
+    border-left: 3px solid #3b82f6;
+    break-inside: avoid;
+    page-break-inside: avoid;
+  }
+
+  .right-panel .experience-company {
+    font-size: 20px;
+    font-weight: 700;
+    margin: 0 0 2px;
+    color: #0f172a;
+  }
+
+  .right-panel .experience-position {
+    font-size: 15px;
+    margin: 0 0 2px;
+    color: #475569;
+  }
+
+  .right-panel .experience-date {
+    font-size: 12px;
+    margin: 0 0 3px;
+    color: #64748b;
+  }
+
+  .right-panel .experience-description {
+    font-size: 12px;
+    line-height: 1.4;
+    margin: 3px 0;
+    color: #334155;
+  }
+
+  /* Kartların içindeki çizgileri kaldır */
+  .education-item hr,
+  .experience-item hr {
+    display: none;
+  }
+
+  /* Düzenle / Sil butonları */
+  .right-panel button {
+    display: none !important;
+  }
+
+  /* Yetenekler */
+  .skill-item {
+    display: inline-flex;
+    align-items: center;
+    margin: 2px 3px;
+  }
+
+  .skill-badge {
+  display: inline-flex;
+  align-items: center;
+  background: #eff6ff;
+  color: #1e293b;
+  padding: 6px 11px;
+  margin: 0;
+  border-radius: 16px;
+  font-size: 13px;
+  line-height: 1;
+}
+
+  .skill-delete-button {
+    display: none !important;
+  }
+}
