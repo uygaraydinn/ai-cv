@@ -8,6 +8,8 @@ function CvForm(props) {
   const [showEducation, setShowEducation] = useState(false);
   const [showExperience, setShowExperience] = useState(false);
   const [showSkills, setShowSkills] = useState(false);
+  const [showCertificates, setShowCertificates] = useState(false);
+  const [showLanguages, setShowLanguages] = useState(false);
 
   return ( 
     <div>
@@ -316,6 +318,334 @@ function CvForm(props) {
 
         </>
         )}
+
+        <hr />
+
+<h2
+  onClick={() => setShowCertificates(!showCertificates)}
+  style={{ cursor: "pointer" }}
+>
+  {showCertificates ? "▼" : "▶"} 📜 Sertifikalar
+</h2>
+
+{showCertificates && (
+  <>
+    <label>Sertifika Adı</label>
+    <input
+      type="text"
+      placeholder="Örn: Python Programlama"
+      value={props.sertifikaAdi}
+      onChange={(e) => props.setSertifikaAdi(e.target.value)}
+    />
+
+    <label>Sertifika Kurumu</label>
+    <input
+      type="text"
+      placeholder="Örn: BTK Akademi"
+      value={props.sertifikaKurumu}
+      onChange={(e) => props.setSertifikaKurumu(e.target.value)}
+    />
+
+    <label>Sertifika Yılı</label>
+    <input
+      type="text"
+      placeholder="2025"
+      value={props.sertifikaYili}
+      onChange={(e) => props.setSertifikaYili(e.target.value)}
+    />
+
+    <label>Sertifika Linki</label>
+    <input
+      type="url"
+      placeholder="https://..."
+      value={props.sertifikaLinki}
+      onChange={(e) => props.setSertifikaLinki(e.target.value)}
+    />
+
+    <button
+      type="button"
+      onClick={() => {
+        if (!props.sertifikaAdi.trim()) {
+          return;
+        }
+
+        const yeniSertifika = {
+          ad: props.sertifikaAdi.trim(),
+          kurum: props.sertifikaKurumu.trim(),
+          yil: props.sertifikaYili.trim(),
+          link: props.sertifikaLinki.trim(),
+        };
+
+        if (props.editSertifikaIndex !== null) {
+          const yeniListe = [...props.sertifikalar];
+
+          yeniListe[props.editSertifikaIndex] = yeniSertifika;
+
+          props.setSertifikalar(yeniListe);
+          props.setEditSertifikaIndex(null);
+        } else {
+          props.setSertifikalar([
+            ...props.sertifikalar,
+            yeniSertifika,
+          ]);
+        }
+
+        props.setSertifikaAdi("");
+        props.setSertifikaKurumu("");
+        props.setSertifikaYili("");
+        props.setSertifikaLinki("");
+      }}
+    >
+      {props.editSertifikaIndex === null
+        ? "Sertifika Ekle"
+        : "Sertifikayı Güncelle"}
+    </button>
+  </>
+)}
+
+<hr />
+
+<h2
+  onClick={() => setShowLanguages(!showLanguages)}
+  style={{ cursor: "pointer" }}
+>
+  {showLanguages ? "▼" : "▶"} 🌐 Dil Becerileri
+</h2>
+
+{showLanguages && (
+  <>
+    <label>Dil</label>
+
+    <input
+      type="text"
+      placeholder="Örn: İngilizce"
+      value={props.dilAdi}
+      onChange={(e) => props.setDilAdi(e.target.value)}
+    />
+
+    <label>Seviye</label>
+
+    <select
+      value={props.dilSeviyesi}
+      onChange={(e) => props.setDilSeviyesi(e.target.value)}
+    >
+      <option value="">Seviye seçin</option>
+      <option value="Başlangıç">Başlangıç</option>
+      <option value="Temel">Temel</option>
+      <option value="Orta">Orta</option>
+      <option value="İleri">İleri</option>
+      <option value="Ana Dil">Ana Dil</option>
+    </select>
+
+    <button
+      type="button"
+      onClick={() => {
+        if (!props.dilAdi.trim() || !props.dilSeviyesi) {
+          return;
+        }
+
+        const yeniDil = {
+          ad: props.dilAdi.trim(),
+          seviye: props.dilSeviyesi,
+        };
+
+        if (props.editDilIndex !== null) {
+          const yeniListe = [...props.diller];
+
+          yeniListe[props.editDilIndex] = yeniDil;
+
+          props.setDiller(yeniListe);
+          props.setEditDilIndex(null);
+        } else {
+          props.setDiller([
+            ...props.diller,
+            yeniDil,
+          ]);
+        }
+
+        props.setDilAdi("");
+        props.setDilSeviyesi("");
+      }}
+    >
+      {props.editDilIndex === null
+        ? "Dil Ekle"
+        : "Dili Güncelle"}
+    </button>
+  </>
+)}
+
+              <div className="template-selector">
+        <h3>CV Şablonu</h3>
+
+        <div className="template-options">
+          <button
+            type="button"
+            className="template-button"
+            onClick={() => props.setTemplate("modern")}
+          >
+            Modern
+          </button>
+
+          <button
+            type="button"
+            className="template-button"
+            onClick={() => props.setTemplate("classic")}
+          >
+            Klasik
+          </button>
+
+          <button
+            type="button"
+            className="template-button"
+            onClick={() => props.setTemplate("minimal")}
+          >
+            Minimal
+          </button>
+        </div>
+      </div>
+
+           <div className="color-selector">
+  <h3>CV Rengi</h3>
+
+  <div className="color-options">
+
+    <button
+      type="button"
+      className={`color-button ${props.themeColor === "#2563eb" ? "selected" : ""}`}
+      style={{ backgroundColor: "#2563eb" }}
+      onClick={() => props.setThemeColor("#2563eb")}
+      aria-label="Mavi"
+      title="Mavi"
+    >
+      {props.themeColor === "#2563eb" && "✓"}
+    </button>
+
+    <button
+      type="button"
+      className={`color-button ${props.themeColor === "#7c3aed" ? "selected" : ""}`}
+      style={{ backgroundColor: "#7c3aed" }}
+      onClick={() => props.setThemeColor("#7c3aed")}
+      aria-label="Mor"
+      title="Mor"
+    >
+      {props.themeColor === "#7c3aed" && "✓"}
+    </button>
+
+    <button
+      type="button"
+      className={`color-button ${props.themeColor === "#16a34a" ? "selected" : ""}`}
+      style={{ backgroundColor: "#16a34a" }}
+      onClick={() => props.setThemeColor("#16a34a")}
+      aria-label="Yeşil"
+      title="Yeşil"
+    >
+      {props.themeColor === "#16a34a" && "✓"}
+    </button>
+
+    <button
+      type="button"
+      className={`color-button ${props.themeColor === "#dc2626" ? "selected" : ""}`}
+      style={{ backgroundColor: "#dc2626" }}
+      onClick={() => props.setThemeColor("#dc2626")}
+      aria-label="Kırmızı"
+      title="Kırmızı"
+    >
+      {props.themeColor === "#dc2626" && "✓"}
+    </button>
+
+    <button
+      type="button"
+      className={`color-button ${props.themeColor === "#111827" ? "selected" : ""}`}
+      style={{ backgroundColor: "#111827" }}
+      onClick={() => props.setThemeColor("#111827")}
+      aria-label="Siyah"
+      title="Siyah"
+    >
+      {props.themeColor === "#111827" && "✓"}
+    </button>
+
+    <button
+      type="button"
+      className={`color-button ${props.themeColor === "#eab308" ? "selected" : ""}`}
+      style={{ backgroundColor: "#eab308" }}
+      onClick={() => props.setThemeColor("#eab308")}
+      aria-label="Sarı"
+      title="Sarı"
+    >
+      {props.themeColor === "#eab308" && "✓"}
+    </button>
+
+    <button
+      type="button"
+      className={`color-button ${props.themeColor === "#ea580c" ? "selected" : ""}`}
+      style={{ backgroundColor: "#ea580c" }}
+      onClick={() => props.setThemeColor("#ea580c")}
+      aria-label="Turuncu"
+      title="Turuncu"
+    >
+      {props.themeColor === "#ea580c" && "✓"}
+    </button>
+
+    <button
+      type="button"
+      className={`color-button ${props.themeColor === "#ec4899" ? "selected" : ""}`}
+      style={{ backgroundColor: "#ec4899" }}
+      onClick={() => props.setThemeColor("#ec4899")}
+      aria-label="Pembe"
+      title="Pembe"
+    >
+      {props.themeColor === "#ec4899" && "✓"}
+    </button>
+
+    <button
+      type="button"
+      className={`color-button ${props.themeColor === "#92400e" ? "selected" : ""}`}
+      style={{ backgroundColor: "#92400e" }}
+      onClick={() => props.setThemeColor("#92400e")}
+      aria-label="Kahverengi"
+      title="Kahverengi"
+    >
+      {props.themeColor === "#92400e" && "✓"}
+    </button>
+     
+     <button
+     type="button"
+     className="color-button"
+     title="Petrol Mavisi"
+     aria-label="Petrol Mavisi"
+     onClick={() => props.setThemeColor("#0f766e")}
+     >
+     </button>
+
+     <button
+     type="button"
+     className="color-button"
+     title="Su Yeşili"
+     aria-label="Su Yeşili"
+     onClick={() => props.setThemeColor("#14b8a6")}
+     >
+     </button>
+
+     <button
+     type="button"
+     className="color-button"
+     title="Gri"
+     aria-label="Gri"
+     onClick={() => props.setThemeColor("#64748b")}
+     >
+     </button>
+
+     <button
+     type="button"
+     className="color-button"
+     title="Lacivert"
+     aria-label="Lacivert"
+     onClick={() => props.setThemeColor("#1e40af")}
+     >
+     </button>
+
+  </div>
+</div>
 
        <button onClick={() => props.onGeneratePDF()}>
        CV Oluştur

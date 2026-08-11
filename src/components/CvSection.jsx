@@ -116,13 +116,59 @@ function CvSection() {
   return [];
   });
 
-  const [profilFoto, setProfilFoto] = useState(() => {
-  const kayitliProfilFoto = localStorage.getItem("cvProfilFoto");
+   const [sertifikalar, setSertifikalar] = useState(() => {
+   const kayitliSertifikalar = localStorage.getItem("cvSertifikalar");
 
-  return kayitliProfilFoto || "";
-  });
+   if (kayitliSertifikalar) {
+    return JSON.parse(kayitliSertifikalar);
+   }
 
-  const isLoaded = true;
+   return [];
+   });
+
+   const [sertifikaAdi, setSertifikaAdi] = useState("");
+   const [sertifikaKurumu, setSertifikaKurumu] = useState("");
+   const [sertifikaYili, setSertifikaYili] = useState("");
+   const [sertifikaLinki, setSertifikaLinki] = useState("");
+   const [editSertifikaIndex, setEditSertifikaIndex] = useState(null);
+
+   const [diller, setDiller] = useState(() => {
+   const kayitliDiller = localStorage.getItem("cvDiller");
+
+   if (kayitliDiller) {
+    return JSON.parse(kayitliDiller);
+   }
+
+   return [];
+   });
+
+   const [dilAdi, setDilAdi] = useState("");
+   const [dilSeviyesi, setDilSeviyesi] = useState("");
+   const [editDilIndex, setEditDilIndex] = useState(null);
+
+   const [profilFoto, setProfilFoto] = useState(() => {
+   const kayitliProfilFoto = localStorage.getItem("cvProfilFoto");
+
+   return kayitliProfilFoto || "";
+   });
+
+   const [template, setTemplate] = useState(() => {
+   return localStorage.getItem("cvTemplate") || "modern";
+   });
+
+   const [themeColor, setThemeColor] = useState(() => {
+   return localStorage.getItem("cvThemeColor") || "#2563eb";
+   });
+
+   const isLoaded = true;
+
+   useEffect(() => {
+   localStorage.setItem("cvThemeColor", themeColor);
+   }, [themeColor]);  
+
+   useEffect(() => {
+   localStorage.setItem("cvTemplate", template);
+   }, [template]);
 
      useEffect(() => {
       
@@ -191,6 +237,28 @@ function CvSection() {
      }
 
      localStorage.setItem(
+     "cvSertifikalar",
+     JSON.stringify(sertifikalar)
+     );
+     }, [isLoaded, sertifikalar]);
+
+     useEffect(() => {
+     if (!isLoaded) {
+     return;
+     }
+
+     localStorage.setItem(
+     "cvDiller",
+     JSON.stringify(diller)
+     );
+     }, [isLoaded, diller]);
+
+     useEffect(() => {
+     if (!isLoaded) {
+     return;
+     }
+
+     localStorage.setItem(
      "cvProfilFoto",
      profilFoto
      );
@@ -199,6 +267,19 @@ function CvSection() {
      const deleteSkill = (indexToDelete) => {
      setSkills(
      skills.filter((skill, index) => index !== indexToDelete)
+     );
+     };
+
+     const deleteSertifika = (indexToDelete) => {
+     setSertifikalar(
+     sertifikalar.filter((sertifika, index) => index !== indexToDelete)
+     );
+     };
+
+     const deleteDil = (indexToDelete) => {
+     setDiller(
+     diller.filter(
+     (dil, index) => index !== indexToDelete)
      );
      };
 
@@ -219,6 +300,26 @@ function CvSection() {
     setEditEducationIndex(index);
    };
 
+   const editSertifika = (index) => {
+   const sertifika = sertifikalar[index];
+
+   setSertifikaAdi(sertifika.ad);
+   setSertifikaKurumu(sertifika.kurum);
+   setSertifikaYili(sertifika.yil);
+   setSertifikaLinki(sertifika.link);
+
+   setEditSertifikaIndex(index);
+   };
+
+   const editDil = (index) => {
+   const dil = diller[index];
+
+   setDilAdi(dil.ad);
+   setDilSeviyesi(dil.seviye);
+
+   setEditDilIndex(index);
+   };
+
    const editDeneyim = (index) => {
    const deneyim = deneyimler[index];
 
@@ -229,7 +330,7 @@ function CvSection() {
    setDeneyimAciklama(deneyim.aciklama);
 
    setEditDeneyimIndex(index);
-  };
+   };
 
     const deleteDeneyim = (indexToDelete) => {
     setDeneyimler(
@@ -238,25 +339,25 @@ function CvSection() {
     };
 
    const generatePDF = async () => {
-  const originalElement = document.querySelector(".right-panel");
+   const originalElement = document.querySelector(".right-panel");
 
-  const pdfElement = originalElement.cloneNode(true);
+   const pdfElement = originalElement.cloneNode(true);
 
-  pdfElement.style.backgroundColor = "#ffffff";
-  pdfElement.style.color = "#0f172a";
-  pdfElement.style.boxShadow = "none";
-  pdfElement.style.width = "794px";
-  pdfElement.style.margin = "0";
-  pdfElement.style.padding = "20px";
-  pdfElement.style.borderRadius = "0";
-  pdfElement.style.boxSizing = "border-box";
+   pdfElement.style.backgroundColor = "#ffffff";
+   pdfElement.style.color = "#0f172a";
+   pdfElement.style.boxShadow = "none";
+   pdfElement.style.width = "794px";
+   pdfElement.style.margin = "0";
+   pdfElement.style.padding = "20px";
+   pdfElement.style.borderRadius = "0";
+   pdfElement.style.boxSizing = "border-box";
   
 
-  const buttons = pdfElement.querySelectorAll("button");
+   const buttons = pdfElement.querySelectorAll("button");
 
-  buttons.forEach((button) => {
-    button.style.display = "none";
-  });
+   buttons.forEach((button) => {
+   button.style.display = "none";
+   });
 
   const previewTitle = pdfElement.querySelector(".preview-title");
 
@@ -324,6 +425,18 @@ function CvSection() {
       <CvForm
         adSoyad={adSoyad}
         onGeneratePDF={generatePDF}
+        themeColor={themeColor}
+        setThemeColor={setThemeColor}
+        template={template}
+        setTemplate={setTemplate}
+        diller={diller}
+        setDiller={setDiller}
+        dilAdi={dilAdi}
+        setDilAdi={setDilAdi}
+        dilSeviyesi={dilSeviyesi}
+        setDilSeviyesi={setDilSeviyesi}
+        editDilIndex={editDilIndex}
+        setEditDilIndex={setEditDilIndex}
         setAdSoyad={setAdSoyad}
         email={email}
         setEmail={setEmail}
@@ -364,6 +477,18 @@ function CvSection() {
         setEditDeneyimIndex={setEditDeneyimIndex}
         skills={skills}
         setSkills={setSkills}
+        sertifikalar={sertifikalar}
+        setSertifikalar={setSertifikalar}
+        sertifikaAdi={sertifikaAdi}
+        setSertifikaAdi={setSertifikaAdi}
+        sertifikaKurumu={sertifikaKurumu}
+        setSertifikaKurumu={setSertifikaKurumu}
+        sertifikaYili={sertifikaYili}
+        setSertifikaYili={setSertifikaYili}
+        sertifikaLinki={sertifikaLinki}
+        setSertifikaLinki={setSertifikaLinki}
+        editSertifikaIndex={editSertifikaIndex}
+        setEditSertifikaIndex={setEditSertifikaIndex}
         profilFoto={profilFoto}
         setProfilFoto={setProfilFoto}
       />
@@ -371,6 +496,8 @@ function CvSection() {
 
     <div className="right-panel">
       <Preview
+        template={template}
+        themeColor={themeColor}
         adSoyad={adSoyad}
         email={email}
         telefon={telefon}
@@ -389,11 +516,17 @@ function CvSection() {
         deneyimler={deneyimler}
         egitimler={egitimler}
         skills={skills}
+        sertifikalar={sertifikalar}
+        editSertifika={editSertifika}
         deleteSkill={deleteSkill}
+        deleteSertifika={deleteSertifika}
         deleteEducation={deleteEducation}
         editEducation={editEducation}
         deleteDeneyim={deleteDeneyim}
         editDeneyim={editDeneyim}
+        diller={diller}
+        editDil={editDil}
+        deleteDil={deleteDil}
         profilFoto={profilFoto}
 
       />

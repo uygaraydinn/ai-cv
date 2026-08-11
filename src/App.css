@@ -1,253 +1,378 @@
+/* =========================
+   GENEL
+========================= */
+
+* {
+  box-sizing: border-box;
+}
+
 body {
   margin: 0;
   font-family: Arial, Helvetica, sans-serif;
-  background-color: #0f172a;
+  background: #0f172a;
   color: white;
-}
-
-.container {
-}
-
-h1 {
-  font-size: 60px;
-  margin-bottom: 20px;
 }
 
 button {
-  padding: 16px 40px;
-  font-size: 20px;
-  background-color: #2563eb;
+  padding: 12px 22px;
+  font-size: 15px;
+  background: #2563eb;
   color: white;
   border: none;
-  border-radius: 12px;
+  border-radius: 8px;
   cursor: pointer;
-  transition: 0.3s;
+  transition: 0.2s ease;
 }
 
 button:hover {
-  background-color: #1d4ed8;
+  background: #1d4ed8;
 }
+
+
+/* =========================
+   CV ANA ALANI
+========================= */
 
 .cv-section {
-  max-width: 1200px;
-  margin: 50px auto;
+  max-width: 1250px;
+  margin: 40px auto;
+  padding: 0 20px;
   display: flex;
-  justify-content: space-between;
-  gap: 40px;
+  align-items: flex-start;
+  gap: 30px;
 }
 
-.left-panel,
-.right-panel {
-  flex: 1;
-  background-color: #1b1b2f;
-  padding: 30px;
-  border-radius: 15px;
-  box-shadow: 0 0 15px rgba(0,0,0,0.3);
+
+/* =========================
+   SOL FORM PANELİ
+========================= */
+
+.left-panel {
+  width: 40%;
+  background: #1e293b;
+  padding: 25px;
+  border-radius: 14px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.25);
 }
 
 .left-panel h2 {
-  margin-bottom: 25px;
-}
-
-.left-panel input {
-  width: 100%;
-  padding: 10px;
-  margin-bottom: 15px;
-  border-radius: 8px;
-  border: none;
-  font-size: 16px;
-}
-
-/* ========================= */
-/* PREVIEW TASARIMI */
-/* ========================= */
-
- .right-panel h1 {
-  font-size: 36px;
-  margin-bottom: 5px;
-  text-align: center;
-  color: #0f172a;
- }
-
-.right-panel hr {
-  border: none;
-  height: 1px;
-  background-color: #334155;
-}
-
-.right-panel p {
+  margin: 0;
+  padding: 16px 0;
+  border-bottom: 1px solid #475569;
   font-size: 18px;
-  margin: 15px 0;
-  color: #334155;
+  color: #f8fafc;
+}
+
+.left-panel input,
+.left-panel textarea {
+  width: 100%;
+  padding: 11px 12px;
+  margin: 8px 0 15px;
+  border-radius: 7px;
+  border: 1px solid #475569;
+  background: #f8fafc;
+  color: #0f172a;
+  font-size: 15px;
+  outline: none;
+}
+
+.left-panel input:focus,
+.left-panel textarea:focus {
+  border-color: #3b82f6;
+  box-shadow: 0 0 0 2px rgba(59, 130, 246, 0.15);
 }
 
 .left-panel textarea {
-  width: 100%;
   min-height: 120px;
-  padding: 10px;
-  border-radius: 8px;
-  border: none;
-  font-size: 16px;
   resize: vertical;
-  box-sizing: border-box;
-  margin-bottom: 20px;
 }
+
+.left-panel label {
+  display: block;
+  margin-top: 10px;
+  color: #cbd5e1;
+  font-size: 14px;
+  font-weight: 600;
+}
+
+
+/* =========================
+   SAĞ CV ÖNİZLEME
+========================= */
 
 .right-panel {
-  line-height: 1.8;
+  width: 60%;
+  background: #ffffff;
+  color: #0f172a;
+  padding: 38px 42px;
+  border-radius: 14px;
+  box-shadow: 0 10px 35px rgba(0, 0, 0, 0.3);
+  line-height: 1.6;
+  min-height: 900px;
 }
 
-.right-panel h2 {
-  margin-top: 25px;
-  margin-bottom: 10px;
-  color: #60a5fa;
-}
-
-.right-panel hr {
-  border: none;
-  height: 1px;
-  background-color: #3b82f6;
-  margin: 20px 0;
-}
-
-.right-panel h2:first-of-type {
+.preview-title {
   text-align: center;
+  color: #64748b;
+  font-size: 14px;
+  margin-bottom: 25px;
 }
 
-.right-panel .cv-name {
-  font-size: 36px;
-  margin: 0;
-  text-align: center;
+
+/* =========================
+   CV HEADER
+========================= */
+
+.cv-header {
+  display: flex;
+  align-items: center;
+  gap: 28px;
+  padding: 5px 0 28px;
+}
+
+.cv-profile-photo {
+  width: 125px;
+  height: 125px;
+  border-radius: 50%;
+  object-fit: cover;
+  flex-shrink: 0;
+  border: 4px solid var(--theme-color);
+}
+
+.cv-header-info {
+  flex: 1;
+  min-width: 0;
+}
+
+.cv-header-info .cv-name {
+  margin: 0 0 4px;
+  font-size: 38px;
+  line-height: 1.15;
+  font-weight: 700;
   color: #0f172a;
 }
 
-.right-panel .cv-title {
-  font-size: 20px;
-  margin-top: 5px;
-  margin-bottom: 25px;
-  text-align: center;
+.cv-header-info .cv-title {
+  margin: 0 0 16px;
+  font-size: 19px;
+  line-height: 1.3;
+  font-weight: 400;
   color: #64748b;
-  font-weight: normal;
 }
 
-.contact-info {
+.cv-header .contact-info {
   display: flex;
-  justify-content: center;
-  gap: 25px;
+  justify-content: flex-start;
+  align-items: center;
+  gap: 12px 18px;
   flex-wrap: wrap;
-  margin: 20px 0 30px;
+  margin: 0;
 }
 
-.contact-info p {
+.cv-header .contact-info p {
   margin: 0;
-  font-size: 15px;
+  font-size: 13px;
   color: #475569;
 }
 
-.cv-action-button {
-  padding: 8px 18px;
+
+/* =========================
+   CV BÖLÜMLERİ
+========================= */
+
+.right-panel > hr {
+  border: none;
+  height: 2px;
+  background: var(--theme-color);
+  margin: 0 0 28px;
+}
+
+.right-panel h2 {
+margin: 28px 0 12px;
+padding-left: 10px;
+border-left: 4px solid var(--theme-color);
+color: var(--theme-color);
+font-size: 20px;
+font-weight: 700;
+line-height: 1.3;
+text-align: left !important;
+}
+
+.right-panel > p {
+  margin: 0 0 20px;
+  color: #334155;
   font-size: 14px;
+  line-height: 1.7;
+}
+
+
+/* =========================
+   EĞİTİM
+========================= */
+
+.education-item {
+  background: #f8fafc;
+  padding: 16px 18px;
+  margin: 12px 0;
   border-radius: 8px;
-  margin: 5px;
+  border-left: 4px solid var(--theme-color);
+  text-align: left;
+}
+
+.right-panel .education-school {
+  margin: 0 0 4px;
+  font-size: 19px;
+  font-weight: 700;
+  color: #0f172a;
+}
+
+.right-panel .education-department {
+  margin: 0 0 5px;
+  font-size: 14px;
+  color: #475569;
+}
+
+.right-panel .education-date {
+  margin: 0 0 10px;
+  font-size: 13px;
+  color: #64748b;
+}
+
+
+/* =========================
+   DENEYİM
+========================= */
+
+.experience-item {
+  background: #f8fafc;
+  padding: 16px 18px;
+  margin: 12px 0;
+  border-radius: 8px;
+  border-left: 4px solid var(--theme-color);
+  text-align: left;
+}
+
+.right-panel .experience-company {
+  margin: 0 0 3px;
+  font-size: 19px;
+  font-weight: 700;
+  color: #0f172a;
+}
+
+.right-panel .experience-position {
+  margin: 0 0 5px;
+  font-size: 14px;
+  color: #475569;
+  font-weight: 600;
+}
+
+.right-panel .experience-date {
+  margin: 0 0 8px;
+  font-size: 13px;
+  color: #64748b;
+}
+
+.right-panel .experience-description {
+  margin: 8px 0 10px;
+  font-size: 14px;
+  line-height: 1.6;
+  color: #334155;
+}
+
+
+/* =========================
+   DÜZENLE / SİL
+========================= */
+
+.cv-action-button {
+  padding: 6px 12px;
+  margin: 4px 4px 0 0;
+  font-size: 12px;
+  border-radius: 6px;
+}
+
+
+/* =========================
+   YETENEKLER
+========================= */
+
+.skill-item {
+  display: inline-flex;
+  align-items: center;
+  margin: 4px;
 }
 
 .skill-badge {
   display: inline-flex;
   align-items: center;
-  background-color: #e2e8f0;
-  color: #1e293b;
-  padding: 6px 10px;
-  margin: 4px;
+  background: #eff6ff;
+  color: #1e3a8a;
+  padding: 7px 11px;
+  margin: 0;
   border-radius: 20px;
-  font-size: 14px;
+  font-size: 13px;
   line-height: 1;
-}
-
-.skill-item {
-  display: inline-flex;
-  align-items: center;
-  margin: 5px;
+  border: 1px solid #bfdbfe;
 }
 
 .skill-delete-button {
   padding: 0;
-  margin-left: 6px;
-  font-size: 28px;
+  margin-left: 7px;
+  font-size: 20px;
   background: none;
   color: #ef4444;
   border: none;
-  cursor: pointer;
 }
 
-.education-item {
-  background-color: #f8fafc;
-  padding: 15px 20px;
-  margin: 15px 0;
-  border-radius: 10px;
-  border-left: 4px solid #3b82f6;
+.skill-delete-button:hover {
+  background: none;
+  color: #dc2626;
 }
 
-.education-school {
-  font-size: 26px;
-  font-weight: bold;
-  color: #0f172a;
-  margin: 0 0 5px;
+
+/* =========================
+   MOBİL
+========================= */
+
+@media (max-width: 900px) {
+  .cv-section {
+    flex-direction: column;
+    padding: 15px;
+  }
+
+  .left-panel,
+  .right-panel {
+    width: 100%;
+  }
+
+  .right-panel {
+    padding: 28px;
+  }
 }
 
-.education-department {
-  font-size: 16px;
-  color: #475569;
-  margin: 0 0 8px;
+@media (max-width: 600px) {
+  .cv-header {
+    flex-direction: column;
+    text-align: center;
+  }
+
+  .cv-header .contact-info {
+    justify-content: center;
+  }
+
+  .cv-header-info .cv-name {
+    font-size: 30px;
+  }
+
+  .right-panel {
+    padding: 22px;
+  }
 }
 
-.right-panel .education-school {
-  font-size: 24px;
-}
 
-.right-panel .education-date {
-  font-size: 14px;
-  color: #64748b;
-  margin: 0 0 10px;
-}
-
-.experience-item {
-  background-color: #f8fafc;
-  padding: 15px 20px;
-  margin: 15px 0;
-  border-radius: 10px;
-  border-left: 4px solid #3b82f6;
-}
-
-.right-panel .experience-company {
-  font-size: 22px;
-  font-weight: bold;
-  color: #0f172a;
-  margin: 0 0 5px;
-}
-
-.right-panel .experience-position {
-  font-size: 16px;
-  color: #475569;
-  margin: 0 0 8px;
-}
-
-.right-panel .experience-date {
-  font-size: 14px;
-  color: #64748b;
-  margin: 0 0 10px;
-}
-
-.right-panel .experience-description {
-  font-size: 15px;
-  color: #334155;
-  line-height: 1.6;
-  margin: 10px 0 15px;
-}
-
-.education-item,
-.experience-item {
-  text-align: left;
-}
+/* =========================
+   YAZDIRMA / PDF
+========================= */
 
 @media print {
   @page {
@@ -263,16 +388,16 @@ button:hover {
   }
 
   .print-hide {
-  display: none !important;
+    display: none !important;
   }
 
   .preview-title {
-  display: none;
+    display: none !important;
   }
 
   .container,
   .left-panel {
-  display: none !important;
+    display: none !important;
   }
 
   .cv-section {
@@ -284,187 +409,417 @@ button:hover {
   }
 
   .right-panel {
-    width: auto;
+    width: 100%;
+    min-height: auto;
     background: white;
     color: #0f172a;
     box-shadow: none;
     border-radius: 0;
     padding: 5px 15px;
-    margin: 0;
     line-height: 1.35;
   }
 
-  /* Profil fotoğrafı */
-  .right-panel img {
-    width: 200px !important;
-    height: 200px !important;
-    object-fit: cover;
-    border-radius: 50%;
-    display: block;
-    margin: 0 auto 12px !important;
+  .cv-profile-photo {
+    width: 110px !important;
+    height: 110px !important;
+    border: 3px solid #2563eb;
   }
 
-  /* İsim */
-  .right-panel .cv-name {
-    font-size: 32px;
-    font-weight: 700;
-    margin: 0 0 4px;
-    text-align: center;
-    color: #0f172a;
+  .cv-header {
+    padding-bottom: 15px;
   }
 
-  /* Meslek */
-  .right-panel .cv-title {
-    font-size: 17px;
-    margin: 0 0 12px;
-    text-align: center;
-    color: #475569;
+  .cv-header-info .cv-name {
+    font-size: 30px;
   }
 
-  /* Ana ayırıcı çizgiler */
-  .right-panel hr {
-  display: none !important;
-  }
-
-  /* İletişim */
-  .contact-info {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    gap: 18px;
-    flex-wrap: wrap;
-    margin: 8px 0 12px;
-  }
-
-  .contact-info p {
-    font-size: 11px;
-    margin: 0;
-    color: #334155;
-  }
-
-  /* Bölüm başlıkları */
-  .right-panel h2 {
-  font-size: 18px;
-  font-weight: 700;
-  color: #2563eb;
-  text-align: left;
-  margin: 12px 0 6px;
-  padding: 0 0 0 8px;
-  border-left: 3px solid #2563eb;
-}
-
- .right-panel .cv-title {
-  border-left: none;
-  padding: 0;
-  text-align: center;
- }
-
-  /* Genel paragraf */
-  .right-panel p {
-    font-size: 12px;
-    margin: 4px 0;
-    color: #334155;
-  }
-
-  /* Hakkımda */
-  .right-panel h2 + p {
-    font-size: 12px;
-    line-height: 1.4;
+  .cv-header-info .cv-title {
+    font-size: 16px;
     margin-bottom: 8px;
   }
 
-  /* Eğitim */
-  .education-item {
-    background: #f8fafc;
-    padding: 8px 12px;
-    margin: 6px 0;
-    border-radius: 6px;
-    border-left: 3px solid #3b82f6;
-    break-inside: avoid;
-    page-break-inside: avoid;
+  .cv-header .contact-info {
+    gap: 10px;
   }
 
-  .right-panel .education-school {
-    font-size: 20px;
-    font-weight: 700;
-    margin: 0 0 2px;
-    color: #0f172a;
+  .cv-header .contact-info p {
+    font-size: 10px;
   }
 
-  .right-panel .education-department {
-    font-size: 15px;
-    margin: 0 0 2px;
-    color: #475569;
+  .right-panel > hr {
+    margin-bottom: 15px;
   }
 
-  .right-panel .education-date {
-    font-size: 12px;
-    margin: 0;
-    color: #64748b;
+  .right-panel h2 {
+    font-size: 17px;
+    margin: 12px 0 6px;
+    padding-left: 7px;
+    border-left-width: 3px;
   }
 
-  /* Deneyim */
+  .right-panel > p {
+    font-size: 11px;
+    margin-bottom: 8px;
+  }
+
+  .education-item,
   .experience-item {
-    background: #f8fafc;
-    padding: 8px 12px;
-    margin: 6px 0;
-    border-radius: 6px;
-    border-left: 3px solid #3b82f6;
+    padding: 8px 10px;
+    margin: 5px 0;
+    border-left-width: 3px;
     break-inside: avoid;
     page-break-inside: avoid;
   }
 
+  .right-panel .education-school,
   .right-panel .experience-company {
-    font-size: 20px;
-    font-weight: 700;
-    margin: 0 0 2px;
-    color: #0f172a;
+    font-size: 16px;
   }
 
+  .right-panel .education-department,
   .right-panel .experience-position {
-    font-size: 15px;
-    margin: 0 0 2px;
-    color: #475569;
+    font-size: 12px;
   }
 
+  .right-panel .education-date,
   .right-panel .experience-date {
-    font-size: 12px;
-    margin: 0 0 3px;
-    color: #64748b;
+    font-size: 10px;
   }
 
   .right-panel .experience-description {
-    font-size: 12px;
-    line-height: 1.4;
-    margin: 3px 0;
-    color: #334155;
+    font-size: 11px;
+    line-height: 1.35;
   }
 
-  /* Düzenle / Sil butonları */
   .right-panel button {
     display: none !important;
   }
 
-  /* Yetenekler */
   .skill-item {
-    display: inline-flex;
-    align-items: center;
-    margin: 2px 3px;
+    margin: 2px;
   }
 
   .skill-badge {
-  display: inline-flex;
-  align-items: center;
-  background: #eff6ff;
-  color: #1e293b;
-  padding: 6px 11px;
-  margin: 0;
-  border-radius: 16px;
-  font-size: 13px;
-  line-height: 1;
-}
+    padding: 5px 8px;
+    font-size: 11px;
+  }
 
   .skill-delete-button {
     display: none !important;
   }
+}
+/* =========================
+   CV BÖLÜM BAŞLIKLARI
+   ========================= */
+
+.right-panel > h2 {
+  text-align: left;
+  font-size: 20px;
+  font-weight: 700;
+  color: #2563eb;
+  margin-top: 28px;
+  margin-bottom: 12px;
+  padding-left: 12px;
+  border-left: 4px solid var(--theme-color);
+}
+
+/* Bölüm başlıklarının altındaki çizgiler */
+.right-panel > hr {
+  border: none;
+  height: 1px;
+  background-color: #e2e8f0;
+  margin: 18px 0;
+}
+
+/* Hakkımda metni */
+.right-panel > p {
+  text-align: left;
+  color: #475569;
+  font-size: 15px;
+  line-height: 1.7;
+}
+
+/* =========================
+   CV ŞABLON SEÇİCİ
+========================= */
+
+.template-selector {
+  margin-top: 20px;
+  padding: 15px;
+  background: #172033;
+  border-radius: 10px;
+  border: 1px solid #334155;
+}
+
+.template-selector h3 {
+  margin: 0 0 12px;
+  color: #f8fafc;
+  font-size: 16px;
+}
+
+.template-options {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
+.template-button {
+  padding: 9px 15px;
+  font-size: 13px;
+  background: #334155;
+  color: #f8fafc;
+  border: 1px solid #475569;
+  border-radius: 7px;
+}
+
+.template-button:hover {
+  background: #2563eb;
+}
+
+/* =========================
+   CV ŞABLONLARI
+========================= */
+
+/* =========================
+   MODERN
+========================= */
+
+.cv-template.modern .cv-header {
+  border-bottom: 2px solid var(--theme-color);
+}
+
+.cv-template.modern .cv-profile-photo {
+  border-color: var(--theme-color);
+}
+
+.cv-template.modern .right-panel h2 {
+  color: var(--theme-color);
+  border-left-color: var(--theme-color);
+}
+
+.cv-template.modern .education-item,
+.cv-template.modern .experience-item {
+  border-left-color: var(--theme-color);
+}
+
+.cv-template.modern .skill-badge {
+  color: var(--theme-color);
+  border-color: var(--theme-color);
+}
+
+
+/* =========================
+   KLASİK
+========================= */
+
+.cv-template.classic {
+  font-family: Georgia, "Times New Roman", serif;
+}
+
+.cv-template.classic .cv-header {
+  display: block;
+  text-align: center;
+  border-bottom: 1px solid #94a3b8;
+  padding-bottom: 22px;
+}
+
+.cv-template.classic .cv-profile-photo {
+  width: 105px;
+  height: 105px;
+  border: 2px solid #64748b;
+  margin: 0 auto 15px;
+}
+
+.cv-template.classic .cv-header-info .cv-name {
+  font-family: Georgia, "Times New Roman", serif;
+  font-size: 34px;
+  letter-spacing: 1px;
+}
+
+.cv-template.classic .cv-header-info .cv-title {
+  font-size: 17px;
+  color: #475569;
+}
+
+.cv-template.classic .cv-header .contact-info {
+  justify-content: center;
+}
+
+.cv-template.classic .right-panel h2 {
+  color: #334155;
+  border-left: none;
+  border-bottom: 1px solid #94a3b8;
+  padding-left: 0;
+  padding-bottom: 6px;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  font-size: 17px;
+}
+
+.cv-template.classic .education-item,
+.cv-template.classic .experience-item {
+  background: transparent;
+  border-left: none;
+  border-bottom: 1px solid #e2e8f0;
+  border-radius: 0;
+  padding: 12px 0;
+}
+
+.cv-template.classic .skill-badge {
+  background: transparent;
+  color: #334155;
+  border: 1px solid #94a3b8;
+}
+
+
+/* =========================
+   MİNİMAL
+========================= */
+
+.cv-template.minimal {
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+.cv-template.minimal .cv-header {
+  gap: 20px;
+  padding-bottom: 20px;
+}
+
+.cv-template.minimal .cv-profile-photo {
+  width: 95px;
+  height: 95px;
+  border: none;
+}
+
+.cv-template.minimal .cv-header-info .cv-name {
+  font-size: 32px;
+  font-weight: 600;
+}
+
+.cv-template.minimal .cv-header-info .cv-title {
+  font-size: 16px;
+  color: #64748b;
+}
+
+.cv-template.minimal .right-panel > hr {
+  background: #e2e8f0;
+  height: 1px;
+}
+
+.cv-template.minimal .right-panel h2 {
+  color: #334155;
+  border-left: none;
+  padding-left: 0;
+  font-size: 17px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.8px;
+}
+
+.cv-template.minimal .education-item,
+.cv-template.minimal .experience-item {
+  background: transparent;
+  border-left: none;
+  padding: 10px 0;
+  margin: 8px 0;
+}
+
+.cv-template.minimal .skill-badge {
+  background: #f8fafc;
+  color: #475569;
+  border: 1px solid #e2e8f0;
+}
+
+/* =========================
+   CV RENK SEÇİCİ
+========================= */
+
+.color-selector {
+  margin-top: 15px;
+  padding: 15px;
+  background: #172033;
+  border-radius: 10px;
+  border: 1px solid #334155;
+}
+
+.color-selector h3 {
+  margin: 0 0 12px;
+  color: #f8fafc;
+  font-size: 16px;
+}
+
+.color-options {
+  display: flex;
+  gap: 12px;
+  flex-wrap: wrap;
+  align-items: center;
+}
+
+.color-button {
+  width: 38px;
+  height: 38px;
+  padding: 0;
+  margin: 0;
+  border-radius: 50%;
+  border: 3px solid #ffffff;
+  cursor: pointer;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.color-button:hover {
+  transform: scale(1.12);
+}
+
+.color-button:focus {
+  outline: none;
+}
+
+.color-button:nth-child(1) {
+  background-color: #2563eb;
+}
+
+.color-button:nth-child(2) {
+  background-color: #7c3aed;
+}
+
+.color-button:nth-child(3) {
+  background-color: #16a34a;
+}
+
+.color-button:nth-child(4) {
+  background-color: #dc2626;
+}
+
+.color-button:nth-child(5) {
+  background-color: #000000;
+}
+
+.color-button:nth-child(6) {
+  background-color: #eab308;
+}
+
+.color-button:nth-child(7) {
+  background-color: #f97316;
+}
+
+.color-button:nth-child(8) {
+  background-color: #ec4899;
+}
+
+.color-button:nth-child(9) {
+  background-color: #92400e;
+}
+.color-button:nth-child(10) {
+  background-color: #0f766e;
+}
+
+.color-button:nth-child(11) {
+  background-color: #14b8a6;
+}
+
+.color-button:nth-child(12) {
+  background-color: #64748b;
+}
+.color-button:nth-child(13) {
+  background-color: #1e40af;
 }
