@@ -78,8 +78,6 @@ function Preview(props) {
        >
        Sil
        </button>
-
-       <hr />
        </div>
        ))}
 
@@ -118,8 +116,6 @@ function Preview(props) {
         >
         Sil
        </button>
-
-       <hr />
        </div>
        ))}
 

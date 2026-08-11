@@ -6,24 +6,11 @@ body {
 }
 
 .container {
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  padding: 20px;
-  text-align: center;
 }
 
 h1 {
   font-size: 60px;
   margin-bottom: 20px;
-}
-
-.container p {
-  font-size: 22px;
-  color: #cbd5e1;
-  margin-bottom: 40px;
 }
 
 button {
@@ -62,11 +49,6 @@ button:hover {
   margin-bottom: 25px;
 }
 
-.right-panel h2 {
-  margin-bottom: 25px;
-  color: #0f172a;
-}
-
 .left-panel input {
   width: 100%;
   padding: 10px;
@@ -76,35 +58,21 @@ button:hover {
   font-size: 16px;
 }
 
-.right-panel p {
-  margin: 12px 0;
-  font-size: 18px;
-}
-
 /* ========================= */
 /* PREVIEW TASARIMI */
 /* ========================= */
 
  .right-panel h1 {
   font-size: 36px;
-  margin-bottom: 8px;
+  margin-bottom: 5px;
   text-align: center;
   color: #0f172a;
  }
-
-.right-panel h3 {
-  text-align: center;
-  color: #94a3b8;
-  font-weight: normal;
-  margin-top: 0;
-  margin-bottom: 25px;
-}
 
 .right-panel hr {
   border: none;
   height: 1px;
   background-color: #334155;
-  margin-bottom: 25px;
 }
 
 .right-panel p {
@@ -129,10 +97,6 @@ button:hover {
   line-height: 1.8;
 }
 
-.right-panel h1 {
-  margin-bottom: 5px;
-}
-
 .right-panel h2 {
   margin-top: 25px;
   margin-bottom: 10px;
@@ -146,7 +110,6 @@ button:hover {
   margin: 20px 0;
 }
 
-.right-panel h1,
 .right-panel h2:first-of-type {
   text-align: center;
 }
@@ -475,12 +438,6 @@ button:hover {
     line-height: 1.4;
     margin: 3px 0;
     color: #334155;
-  }
-
-  /* Kartların içindeki çizgileri kaldır */
-  .education-item hr,
-  .experience-item hr {
-    display: none;
   }
 
   /* Düzenle / Sil butonları */

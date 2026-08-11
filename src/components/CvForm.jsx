@@ -25,37 +25,36 @@ function CvForm(props) {
       <input
         type="text"
         placeholder="Ad Soyad"
-        value={props.adSoyad + ""}
-        onChange={(e) => {console.log(e.target.value);
-        props.setAdSoyad(e.target.value);
-}}
+        value={props.adSoyad}
+        onChange={(e) => props.setAdSoyad(e.target.value)}
+
       />
       <label>E-Posta</label>
       <input
         type="email"
         placeholder="E-posta"
-        value={props.email + ""}
+        value={props.email}
         onChange={(e) => props.setEmail(e.target.value)}
       />
       <label>Telefon</label>
       <input
         type="tel"
         placeholder="Telefon"
-        value={props.telefon + ""}
+        value={props.telefon}
         onChange={(e) => props.setTelefon(e.target.value)}
       />
       <label>Şehir</label>
       <input
         type="text"
         placeholder="Şehir"
-        value={props.sehir + ""}
+        value={props.sehir}
         onChange={(e) => props.setSehir(e.target.value)}
       />
       <label>Meslek</label>
       <input
         type="text"
         placeholder="Meslek"
-        value={props.meslek + ""}
+        value={props.meslek}
         onChange={(e) => props.setMeslek(e.target.value)}
       />
       <label>Hakkımda</label>
@@ -103,7 +102,7 @@ function CvForm(props) {
        <input
         type="text"
         placeholder="Okul"
-        value={props.okul + ""}
+        value={props.okul}
         onChange={(e) => props.setOkul(e.target.value)}
        />
 
@@ -111,21 +110,21 @@ function CvForm(props) {
        <input
         type="text"
         placeholder="Bölüm"
-        value={props.bolum + ""}
+        value={props.bolum}
         onChange={(e) => props.setBolum(e.target.value)}
        />
        <label>Başlangıç Yılı</label>
        <input
         type="number"
         placeholder="Başlangıç Yılı"
-        value={props.baslangicYili + ""}
+        value={props.baslangicYili}
         onChange={(e) => props.setBaslangicYili(e.target.value)}
        />
        <label>Bitiş Yılı</label>
        <input
         type="number"
         placeholder="Bitiş Yılı"
-        value={props.bitisYili + ""}
+        value={props.bitisYili}
         onChange={(e) => props.setBitisYili(e.target.value)}
        />
 
@@ -137,7 +136,6 @@ function CvForm(props) {
         baslangic: props.baslangicYili,
        bitis: props.bitisYili,
        };
-        console.log(yeniEgitim);
 
         if (props.editEducationIndex !== null) {
         const yeniListe = [...props.egitimler];
@@ -232,7 +230,6 @@ function CvForm(props) {
         bitis: props.deneyimBitis,
         aciklama: props.deneyimAciklama,
         };
-        console.log(yeniDeneyim);
 
         if (props.editDeneyimIndex !== null) {
         const yeniListe = [...props.deneyimler];

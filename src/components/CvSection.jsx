@@ -5,28 +5,125 @@ import CvForm from "./CvForm";
 import Preview from "./Preview";
 
 function CvSection() {
-  const [adSoyad, setAdSoyad] = useState("");
-  const [email, setEmail] = useState("");
-  const [telefon, setTelefon] = useState("");
-  const [sehir, setSehir] = useState("");
-  const [meslek, setMeslek] = useState("");
-  const [hakkimda, setHakkimda] = useState("");
+  
+  const [adSoyad, setAdSoyad] = useState(() => {
+  const kayitliBilgiler = localStorage.getItem("cvKisiselBilgiler");
+
+  if (kayitliBilgiler) {
+  const bilgiler = JSON.parse(kayitliBilgiler);
+  return bilgiler.adSoyad || "";
+  }
+
+  return "";
+  });
+
+  const [email, setEmail] = useState(() => {
+  const kayitliBilgiler = localStorage.getItem("cvKisiselBilgiler");
+
+  if (kayitliBilgiler) {
+  const bilgiler = JSON.parse(kayitliBilgiler);
+  return bilgiler.email || "";
+  }
+
+  return "";
+  });
+
+  const [telefon, setTelefon] = useState(() => {
+  const kayitliBilgiler = localStorage.getItem("cvKisiselBilgiler");
+
+  if (kayitliBilgiler) {
+  const bilgiler = JSON.parse(kayitliBilgiler);
+  return bilgiler.telefon || "";
+  }
+
+  return "";
+  });
+
+  const [sehir, setSehir] = useState(() => {
+  const kayitliBilgiler = localStorage.getItem("cvKisiselBilgiler");
+
+  if (kayitliBilgiler) {
+  const bilgiler = JSON.parse(kayitliBilgiler);
+  return bilgiler.sehir || "";
+  }
+
+  return "";
+  });
+
+  const [meslek, setMeslek] = useState(() => {
+  const kayitliBilgiler = localStorage.getItem("cvKisiselBilgiler");
+
+  if (kayitliBilgiler) {
+  const bilgiler = JSON.parse(kayitliBilgiler);
+  return bilgiler.meslek || "";
+  }
+
+  return "";
+  });
+
+  const [hakkimda, setHakkimda] = useState(() => {
+  const kayitliBilgiler = localStorage.getItem("cvKisiselBilgiler");
+
+  if (kayitliBilgiler) {
+  const bilgiler = JSON.parse(kayitliBilgiler);
+  return bilgiler.hakkimda || "";
+  }
+
+  return "";
+  });
+
   const [okul, setOkul] = useState("");
   const [bolum, setBolum] = useState("");
   const [baslangicYili, setBaslangicYili] = useState("");
   const [bitisYili, setBitisYili] = useState("");
-  const [egitimler, setEgitimler] = useState([]);
+
+  const [egitimler, setEgitimler] = useState(() => {
+  const kayitliEgitimler = localStorage.getItem("cvEgitimler");
+
+  if (kayitliEgitimler) {
+  return JSON.parse(kayitliEgitimler);
+  }
+
+  return [];
+  });
+
   const [editEducationIndex, setEditEducationIndex] = useState(null);
   const [editDeneyimIndex, setEditDeneyimIndex] = useState(null);
-  const [deneyimler, setDeneyimler] = useState([]);
+
+  const [deneyimler, setDeneyimler] = useState(() => {
+  const kayitliDeneyimler = localStorage.getItem("cvDeneyimler");
+
+  if (kayitliDeneyimler) {
+  return JSON.parse(kayitliDeneyimler);
+  }
+
+  return [];
+  });
+
   const [sirket, setSirket] = useState("");
   const [pozisyon, setPozisyon] = useState("");
   const [deneyimBaslangic, setDeneyimBaslangic] = useState("");
   const [deneyimBitis, setDeneyimBitis] = useState("");
   const [deneyimAciklama, setDeneyimAciklama] = useState("");
-  const [skills, setSkills] = useState([]);
-  const [profilFoto, setProfilFoto] = useState("");
-  const [isLoaded, setIsLoaded] = useState(false);
+
+  const [skills, setSkills] = useState(() => {
+  const kayitliSkills = localStorage.getItem("cvSkills");
+
+  if (kayitliSkills) {
+  return JSON.parse(kayitliSkills);
+  }
+
+  return [];
+  });
+
+  const [profilFoto, setProfilFoto] = useState(() => {
+  const kayitliProfilFoto = localStorage.getItem("cvProfilFoto");
+
+  return kayitliProfilFoto || "";
+  });
+
+  const isLoaded = true;
+
      useEffect(() => {
       
       if (!isLoaded) {
@@ -45,6 +142,7 @@ function CvSection() {
      })
      );
      }, [
+      isLoaded,
       adSoyad,
       email,
       telefon,
@@ -52,22 +150,6 @@ function CvSection() {
       meslek,
       hakkimda,
       ]);
-
-      useEffect(() => {
-      const kayitliBilgiler = localStorage.getItem("cvKisiselBilgiler");
-
-      if (kayitliBilgiler) {
-      const bilgiler = JSON.parse(kayitliBilgiler);
-
-      setAdSoyad(bilgiler.adSoyad || "");
-      setEmail(bilgiler.email || "");
-      setTelefon(bilgiler.telefon || "");
-      setSehir(bilgiler.sehir || "");
-      setMeslek(bilgiler.meslek || "");
-      setHakkimda(bilgiler.hakkimda || "");
-      }
-     setIsLoaded(true);
-     }, []);
 
      useEffect(() => {
      if (!isLoaded) {
@@ -113,40 +195,6 @@ function CvSection() {
      profilFoto
      );
      }, [isLoaded, profilFoto]);
-
-     useEffect(() => {
-     const kayitliProfilFoto = localStorage.getItem("cvProfilFoto");
-
-     if (kayitliProfilFoto) {
-     setProfilFoto(kayitliProfilFoto);
-     }
-     }, []);
-
-     useEffect(() => {
-     const kayitliSkills = localStorage.getItem("cvSkills");
-
-     if (kayitliSkills) {
-     setSkills(JSON.parse(kayitliSkills));
-     }
-     }, []);
-
-     useEffect(() => {
-     const kayitliDeneyimler = localStorage.getItem("cvDeneyimler");
-
-     if (kayitliDeneyimler) {
-     setDeneyimler(JSON.parse(kayitliDeneyimler));
-     }
-     }, []);
-
-     useEffect(() => {
-     const kayitliEgitimler = localStorage.getItem("cvEgitimler");
-
-     if (kayitliEgitimler) {
-     setEgitimler(JSON.parse(kayitliEgitimler));
-     }
-     }, []);
-
-
 
      const deleteSkill = (indexToDelete) => {
      setSkills(
