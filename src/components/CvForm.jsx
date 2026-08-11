@@ -66,17 +66,24 @@ function CvForm(props) {
        ></textarea>
 
        <label>Profil Fotoğrafı</label>
-       <input
-        type="file"
-        accept="image/*"
-        onChange={(e) => {
-        const file = e.target.files[0];
 
-        if (file) {
-        props.setProfilFoto(URL.createObjectURL(file));
-        }
-        }}
-        />
+       <input
+       type="file"
+       accept="image/*"
+       onChange={(e) => {
+       const file = e.target.files[0];
+
+       if (file) {
+       const reader = new FileReader();
+
+       reader.onloadend = () => {
+       props.setProfilFoto(reader.result);
+       };
+
+       reader.readAsDataURL(file);
+       }
+       }}
+       />
 
        </>
        )}
@@ -313,10 +320,10 @@ function CvForm(props) {
         </>
         )}
 
-       <button onClick={() => window.print()}>
+       <button onClick={() => props.onGeneratePDF()}>
        CV Oluştur
        </button>
-       
+
        </div>
   );
 }

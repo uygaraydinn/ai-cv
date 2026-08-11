@@ -1,4 +1,6 @@
 import { useState, useEffect } from "react";
+import html2canvas from "html2canvas";
+import { jsPDF } from "jspdf";
 import CvForm from "./CvForm";
 import Preview from "./Preview";
 
@@ -187,12 +189,93 @@ function CvSection() {
     );
     };
 
+   const generatePDF = async () => {
+  const originalElement = document.querySelector(".right-panel");
+
+  const pdfElement = originalElement.cloneNode(true);
+
+  pdfElement.style.backgroundColor = "#ffffff";
+  pdfElement.style.color = "#0f172a";
+  pdfElement.style.boxShadow = "none";
+  pdfElement.style.width = "794px";
+  pdfElement.style.margin = "0";
+  pdfElement.style.padding = "20px";
+  pdfElement.style.borderRadius = "0";
+  pdfElement.style.boxSizing = "border-box";
+  
+
+  const buttons = pdfElement.querySelectorAll("button");
+
+  buttons.forEach((button) => {
+    button.style.display = "none";
+  });
+
+  const previewTitle = pdfElement.querySelector(".preview-title");
+
+  if (previewTitle) {
+    previewTitle.style.display = "none";
+  }
+
+  const container = document.createElement("div");
+
+  container.style.position = "fixed";
+  container.style.left = "-10000px";
+  container.style.top = "0";
+  container.style.width = "794px";
+  container.style.backgroundColor = "#ffffff";
+  
+
+  container.appendChild(pdfElement);
+  document.body.appendChild(container);
+
+  try {
+    const canvas = await html2canvas(pdfElement, {
+      scale: 2,
+      useCORS: true,
+      backgroundColor: "#ffffff",
+    });
+
+    const imageData = canvas.toDataURL("image/jpeg", 0.98);
+
+    const pdf = new jsPDF({
+      orientation: "portrait",
+      unit: "mm",
+      format: "a4",
+    });
+
+    const pageWidth = 210;
+    const pageHeight = 297;
+
+    const margin = 5;
+
+    const imageWidth = pageWidth - margin * 2;
+    const imageHeight = pageHeight - margin * 2;
+
+    const x = margin;
+    const y = margin;
+
+    pdf.addImage(
+    imageData,
+    "JPEG",
+    x,
+    y,
+    imageWidth,
+    imageHeight
+    );
+
+    pdf.save(`${adSoyad || "CV"}_CV.pdf`);
+  } finally {
+    document.body.removeChild(container);
+  }
+};
+
   return (
   <div className="cv-section">
 
     <div className="left-panel">
       <CvForm
         adSoyad={adSoyad}
+        onGeneratePDF={generatePDF}
         setAdSoyad={setAdSoyad}
         email={email}
         setEmail={setEmail}
